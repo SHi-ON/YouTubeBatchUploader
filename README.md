@@ -1,4 +1,4 @@
-# youtube-batch-upload
+# YouTube Batch Uploader
 This tool will do a batch video, subtitle, and thumbnail upload to any YouTube channel including adding information such as description, and title automatically. In short, it read all materials' information from macro-excel and upload them accordingly. The tool will return a set of video URLs which will be used as an input for creating video content of edx.org online course instance
 
 Please see the pptx of pdf file for further instructions and youtube video https://youtu.be/PSaWd7bDChM

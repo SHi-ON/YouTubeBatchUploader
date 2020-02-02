@@ -44,7 +44,7 @@ RETRIABLE_STATUS_CODES = [500, 502, 503, 504]
 # For more information about the client_secrets.json file format, see:
 #   https://developers.google.com/api-client-library/python/guide/aaa_client_secrets
 
-CLIENT_SECRETS_FILE = secret_client_file()
+# CLIENT_SECRETS_FILE = secret_client_file()
 CLIENT_SECRETS_FILE = "video_source/ID/client_secret_1000983944386-r8pg20scp5dra2dinpn7ve42ljjvru0t.apps" \
                       ".googleusercontent.com" \
                       ".json"

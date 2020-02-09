@@ -14,7 +14,7 @@ from oauth2client.client import flow_from_clientsecrets
 from oauth2client.file import Storage
 from oauth2client.tools import argparser, run_flow
 
-from ID.secret_id import secret_client_file
+# from ID.secret_id import secret_client_file
 
 # Explicitly tell the underlying HTTP transport library not to retry, since
 # we are handling retry logic ourselves.
@@ -45,11 +45,12 @@ RETRIABLE_STATUS_CODES = [500, 502, 503, 504]
 #   https://developers.google.com/api-client-library/python/guide/aaa_client_secrets
 
 # CLIENT_SECRETS_FILE = secret_client_file()
-CLIENT_SECRETS_FILE = "video_source/ID/client_secret_1000983944386-r8pg20scp5dra2dinpn7ve42ljjvru0t.apps" \
-                      ".googleusercontent.com" \
-                      ".json"
-# CLIENT_SECRETS_FILE = "client_secret_467836083994-la6a1ker3ae3vkc1i4ikrab9mvckntq1.apps.googleusercontent.com.json" # nopphon id
-# CLIENT_SECRETS_FILE = "client_secret_96004811556-ibqgvbkddqi99cl1arqf9gabgmtcbuoi.apps.googleusercontent.com.json"  # odeo id
+CLIENT_SECRETS_FILE = "ytbatcher/ID/client_secret_1000983944386-r8pg20scp5dra2dinpn7ve42ljjvru0t.apps" \
+                      ".googleusercontent" \
+                      ".com.json"
+
+# current_dir = os.getcwd()
+# CLIENT_SECRETS_FILE = os.path.join(current_dir, CLIENT_SECRETS_FILE)
 
 # This OAuth 2.0 access scope allows an application to upload files to the
 # authenticated user's YouTube channel, but doesn't allow other types of access.
@@ -121,8 +122,6 @@ def initialize_upload(youtube, options):
     # Call the API's videos.insert method to create and upload the video.
     insert_request = youtube.videos().insert(
         part=",".join(body.keys()),
-        # onBehalfOfContentOwner="Xq_vUZ8hXmQwZJVX3-cEvg",
-        # onBehalfOfContentOwnerChannel="UCXq_vUZ8hXmQwZJVX3-cEvg",
         body=body,
         # The chunksize parameter specifies the size of each chunk of data, in
         # bytes, that will be uploaded at a time. Set a higher value for

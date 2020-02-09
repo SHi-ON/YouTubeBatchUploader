@@ -66,7 +66,7 @@ def upload_video():
 
 
 if __name__ == '__main__':
-    # upload_video()
-    agg_clips, agg_names = aggregate_videos()
-    merge_videos(agg_clips, agg_names)
+    upload_video()
+    # agg_clips, agg_names = aggregate_videos()
+    # merge_videos(agg_clips, agg_names)
 

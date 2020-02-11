@@ -2,6 +2,11 @@
 .idea
 __pycache__/
 
+video_files/*
+
+batched_videos.txt
+ytbatcher/upload_video.py-oauth2.json
+
 uploaded_video_link.txt
 ##############
 

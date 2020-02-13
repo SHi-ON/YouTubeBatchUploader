@@ -1,10 +1,11 @@
 import os
 import time
 
-from moviepy.editor import VideoFileClip, concatenate_videoclips
+from moviepy.editor import VideoFileClip, CompositeVideoClip, concatenate_videoclips
 
 EXTENSIONS = ['.mp4', '.mov', '.mkv', '.3gp', '.avi', '.wmv', '.flv']
 LOG_FILENAME = 'batched_videos.txt'
+DIMENSION = (720, 1280)
 
 
 def extract_video_paths():
@@ -17,7 +18,8 @@ def merge_videos(aggregate_clips, aggregate_names):
     for i in range(len(aggregate_clips)):
         render = concatenate_videoclips(aggregate_clips[i])
         filename = 'video_' + str(i) + '.mp4'
-        render.write_videofile(filename, codec='libx264')
+        # render.write_videofile(filename, codec='libx264')
+        render.write_videofile(filename)
 
         log_filenames = '\n'.join(aggregate_names[i])
         handle.write('Merged in video_' + str(i) + ': \n' + log_filenames + '\n')
@@ -37,6 +39,7 @@ def aggregate_videos():
     for video in video_paths:
         file_path = os.path.join(current_dir, 'video_files', video)
         clip = VideoFileClip(file_path)
+        clip = CompositeVideoClip([clip], size=DIMENSION)
         if clips_dur < 3600:
             clips.append(clip)
             names.append(video)
@@ -66,7 +69,7 @@ def upload_video():
 
 
 if __name__ == '__main__':
-    upload_video()
-    # agg_clips, agg_names = aggregate_videos()
-    # merge_videos(agg_clips, agg_names)
+    # upload_video()
+    agg_clips, agg_names = aggregate_videos()
+    merge_videos(agg_clips, agg_names)
 
